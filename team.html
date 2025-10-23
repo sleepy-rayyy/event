@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Department | Team</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="team.css" />
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+    .profile-popup {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background-color: var(--dark-navy);
+      color: var(--white);
+      box-shadow: -3px 0 15px rgba(0,0,0,0.4);
+      padding: 30px 20px;
+      transition: right 0.4s var(--transition);
+      z-index: 999;
+    }
+
+    .profile-popup.active {
+      right: 0;
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .profile-header h3 {
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .profile-header i {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .profile-header i:hover {
+      color: var(--gold);
+    }
+
+    .profile-content {
+      text-align: center;
+    }
+
+    .profile-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .profile-content h4 {
+      color: var(--light-gold);
+      margin-bottom: 5px;
+    }
+
+    .profile-content p {
+      margin-bottom: 15px;
+      color: var(--white);
+    }
+
+    .profile-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .profile-buttons button {
+      background-color: transparent;
+      color: var(--white);
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-buttons button:hover {
+      background-color: var(--gold);
+      color: var(--dark-navy);
+    }
+
+    .profile-buttons button i {
+      width: 20px;
+      text-align: center;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+  </style
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" class="logo-img" />
+        <span>EVENT<br>DEPARTMENT</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="chart.html">Chart</a></li>
+        <li><a href="rules.html">Rules</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+      </ul>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-bell"></i>
+        <i class="fa-solid fa-user-circle" id="profileIcon"></i>
+      </div>
+    </nav>
+  </header>
+
+
+  <main class="team-section">
+    <div class="team-container">
+
+      <div class="team-header">
+        <h2 class="team-name">TEAM B3</h2>
+      </div>
+
+
+      <div class="team-table-wrapper">
+        <div class="team-table">
+
+
+          <table class="player-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>IGN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>423942821</td><td>Francisco, Nicole</td><td>Discaya</td></tr>
+              <tr><td>423942822</td><td>Galarido, Dwayne</td><td>Zaldy Co</td></tr>
+              <tr><td>423942823</td><td>Del Rosario, Jasmin Crage</td><td>Sara D.</td></tr>
+              <tr><td>423942824</td><td>Millanes, Ranilo O.</td><td>Marcolleta</td></tr>
+              <tr><td>423942825</td><td>Espino, Jonel</td><td>Jinggoy</td></tr>
+              <tr><td>423942826</td><td>Alindog, David</td><td>Bato</td></tr>
+            </tbody>
+          </table>
+
+
+          <div class="divider"></div>
+
+
+          <table class="role-table">
+            <thead>
+              <tr>
+                <th>ROLE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Multi-Role</td></tr>
+              <tr><td>Gold Lane</td></tr>
+              <tr><td>Mid Lane</td></tr>
+              <tr><td>Exp Lane</td></tr>
+              <tr><td>Jungle</td></tr>
+              <tr><td>Roam</td></tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="profile-popup" id="profilePopup">
+    <div class="profile-header">
+      <h3>Profile</h3>
+      <i class="fa-solid fa-xmark" id="closeProfile"></i>
+    </div>
+    <div class="profile-content">
+      <img src="1.png" alt="Profile Picture">
+      <h4>John Raymart G. Dordines</h4>
+      <p>Role: Student</p>
+      <p>Email: dordines05@gmail.com</p>
+      <div class="profile-buttons">
+        <button><i class="fa-solid fa-gear"></i> Settings & Privacy</button>
+        <button><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+        <button><i class="fa-solid fa-eye"></i> Display & Accessibility</button>
+        <button onclick="window.location.href='login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // PROFILE POPUP LOGIC
+    const profileIcon = document.getElementById('profileIcon');
+    const profilePopup = document.getElementById('profilePopup');
+    const closeProfile = document.getElementById('closeProfile');
+    const overlay = document.getElementById('overlay');
+
+    profileIcon.addEventListener('click', () => {
+      profilePopup.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    closeProfile.addEventListener('click', () => {
+      profilePopup.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      profilePopup.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
+
+</body>
+</html>

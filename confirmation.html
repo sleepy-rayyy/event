@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registration Submitted</title>
+  <link rel="stylesheet" href="fonts.css">
+  <style>
+    :root {
+      --navy: #0b1a3d;
+      --gold: #f4b400;
+      --light-gold: #ffd75e;
+      --white: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      background: url('1.png') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer; /* whole page is clickable */
+    }
+    /* Blue overlay covering full screen */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(11, 26, 61, 0.85); /* semi-transparent navy/blue */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .message-box {
+      text-align: center;
+      max-width: 800px;
+      padding: 40px;
+      color: var(--white);
+    }
+    .message-box h1 {
+      font-size: 36px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .message-box h2 {
+      font-size: 24px;
+      color: var(--light-gold);
+      margin-bottom: 15px;
+    }
+    .message-box p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .hint {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body onclick="window.location.href='index.html'">
+  <div class="overlay">
+    <div class="message-box">
+      <h1>Registration Submitted</h1>
+      <h2>Thank you for your participation.</h2>
+      <p>The main purpose is to serve as a centralized hub for all event-related information and activities</p>
+      <div class="hint">(Click anywhere to return to the Events Portal)</div>
+    </div>
+  </div>
+</body>
+</html>

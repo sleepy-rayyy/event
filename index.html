@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Department | Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="icon" href="logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .profile-popup {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background-color: var(--dark-navy);
+      color: var(--white);
+      box-shadow: -3px 0 15px rgba(0,0,0,0.4);
+      padding: 30px 20px;
+      transition: right 0.4s var(--transition);
+      z-index: 999;
+    }
+
+    .profile-popup.active {
+      right: 0;
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .profile-header h3 {
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .profile-header i {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .profile-header i:hover {
+      color: var(--gold);
+    }
+
+    .profile-content {
+      text-align: center;
+    }
+
+    .profile-content img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .profile-content h4 {
+      color: var(--light-gold);
+      margin-bottom: 5px;
+    }
+
+    .profile-content p {
+      margin-bottom: 15px;
+      color: var(--white);
+    }
+
+    .profile-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .profile-buttons button {
+      background-color: transparent;
+      color: var(--white);
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: left;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-buttons button:hover {
+      background-color: var(--gold);
+      color: var(--dark-navy);
+    }
+
+    .profile-buttons button i {
+      width: 20px;
+      text-align: center;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 998;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Event Department Logo">
+        <span>EVENT<br>DEPARTMENT</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="chart.html">Chart</a></li>
+        <li><a href="rules.html">Rules</a></li>
+        <li><a href="team.html">Team</a></li>
+      </ul>
+      <div class="icons">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-bell"></i>
+        <i class="fa-solid fa-user-circle" id="profileIcon"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="content">
+    <aside class="announcements">
+      <h3 onclick="showAnnouncement('all', this)" id="announcement-title">ANNOUNCEMENTS</h3>
+      <ul>
+        <li class="active" onclick="showAnnouncement('opening', this)">Intramurals Opening Ceremony</li>
+        <li onclick="showAnnouncement('safety', this)">Health & Safety Reminder</li>
+        <li onclick="showAnnouncement('awarding', this)">Awarding & Closing Program</li>
+        <li onclick="showAnnouncement('suspension', this)">Class Suspension Notice</li>
+        <li onclick="showAnnouncement('spirit', this)">Team Spirit Contest</li>
+      </ul>
+    </aside>
+
+    <section class="announcement-details" id="announcement-content">
+      <h3>Intramurals Opening Ceremony</h3>
+      <p>
+        The Intramurals Opening Ceremony will mark the official start of Sportsfest 2025.
+        Join us for the parade of teams, the lighting of the torch, and exciting performances!
+        Don’t miss the opening remarks from our event coordinators and special guests.
+      </p>
+    </section>
+  </main>
+
+  <!-- PROFILE POPUP -->
+  <div class="overlay" id="overlay"></div>
+  <div class="profile-popup" id="profilePopup">
+    <div class="profile-header">
+      <h3>Profile</h3>
+      <i class="fa-solid fa-xmark" id="closeProfile"></i>
+    </div>
+    <div class="profile-content">
+      <img src="1.png" alt="Profile Picture">
+      <h4>John Raymart G. Dordines</h4>
+      <p>Role: Student</p>
+      <p>Email: dordines05@gmail.com</p>
+
+      <div class="profile-buttons">
+        <button><i class="fa-solid fa-gear"></i> Settings & Privacy</button>
+        <button><i class="fa-solid fa-circle-question"></i> Help & Support</button>
+        <button><i class="fa-solid fa-eye"></i> Display & Accessibility</button>
+        <button onclick="window.location.href='login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const announcements = {
+      opening: {
+        title: "Intramurals Opening Ceremony",
+        text: `
+          The Intramurals Opening Ceremony will mark the official start of Sportsfest 2025.
+          Join us for the parade of teams, the lighting of the torch, and exciting performances!
+          Don’t miss the opening remarks from our event coordinators and special guests.
+        `
+      },
+      safety: {
+        title: "Health & Safety Reminder",
+        text: `
+          All participants and spectators are reminded to follow safety protocols throughout the event.
+          Stay hydrated, wear appropriate gear, and immediately report any injury or emergency to the medical team.
+        `
+      },
+      awarding: {
+        title: "Awarding & Closing Program",
+        text: `
+          The closing ceremony will be held on October 9, featuring the awarding of champions and outstanding athletes.
+          Celebrate with us as we recognize excellence, teamwork, and sportsmanship.
+        `
+      },
+      suspension: {
+        title: "Class Suspension Notice",
+        text: `
+          Please be informed that regular classes will be suspended from October 6 to 9 to give way to the Sportsfest.
+          Enjoy the games and support your department’s teams!
+        `
+      },
+      spirit: {
+        title: "Team Spirit Contest",
+        text: `
+          Show your pride and creativity! Join the Team Spirit Contest by showcasing your team’s unique cheer,
+          banner, or chant. Winners will be announced during the closing ceremony.
+        `
+      },
+      all: {
+        title: "Announcements",
+        text: `
+          <ul style="line-height: 1.8;">
+            <li><strong>We are pleased to announce that the Sportsfest 2025 will be held on October 6–9, from 7:00 AM to 9:00 PM at BCP MV Campus.</strong></li>
+            <li><strong>We encourage everyone to participate and support this meaningful event.</strong></li>
+          </ul>
+        `
+      }
+    };
+
+    function showAnnouncement(key, element) {
+      const content = document.getElementById('announcement-content');
+      const selected = announcements[key];
+      content.innerHTML = `<h3>${selected.title}</h3><p>${selected.text}</p>`;
+      document.querySelectorAll('.announcements li, .announcements h3').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    // PROFILE POPUP LOGIC
+    const profileIcon = document.getElementById('profileIcon');
+    const profilePopup = document.getElementById('profilePopup');
+    const closeProfile = document.getElementById('closeProfile');
+    const overlay = document.getElementById('overlay');
+
+    profileIcon.addEventListener('click', () => {
+      profilePopup.classList.add('active');
+      overlay.classList.add('active');
+    });
+
+    closeProfile.addEventListener('click', () => {
+      profilePopup.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      profilePopup.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

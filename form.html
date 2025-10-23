@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="form.css" />
+  <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+  <section class="registration">
+    <div class="form-box">
+      <h2>Registration</h2>
+      <form onsubmit="event.preventDefault(); window.location.href='confirmation.html';">
+        <div class="form-grid">
+          <div class="column">
+            <label>Student ID:<input type="text" name="studentId" placeholder="Enter Student ID" /></label>
+            <label>Name:<input type="text" name="name" placeholder="Enter Name" /></label>
+            <label>Age:<input type="number" name="age" placeholder="Enter Age" /></label>
+            <label>Address:<input type="text" name="address" placeholder="Enter Address" /></label>
+            <label>Program:<input type="text" name="program" placeholder="Enter Program" /></label>
+          </div>
+
+          <div class="column">
+            <label>Year Level:<input type="text" name="yearLevel" placeholder="Enter Year Level" /></label>
+            <label>Section:<input type="text" name="section" placeholder="Enter Section" /></label>
+            <label>Email:<input type="email" name="email" placeholder="Enter Email" /></label>
+            <label>Contact Number:<input type="text" name="contact" placeholder="Enter Contact Number" /></label>
+            <label>Game ID:<input type="text" name="gameId" placeholder="Enter Game ID" /></label>
+          </div>
+
+          <div class="column">
+            <label>InGame Name:<input type="text" name="ign" placeholder="Enter InGame Name" /></label>
+            <label>Role:<input type="text" name="role" placeholder="Enter Role" /></label>
+            <div class="ml-logo">
+              <img src="ml-logo.png" alt="Mobile Legends Logo" />
+            </div>
+            <button type="submit" class="submit">SUBMIT</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

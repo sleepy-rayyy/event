@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose your Sport</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="fonts.css">
+</head>
+<body>
+  <section class="sportsfest">
+    <h2>Sportsfest Event List</h2>
+    <p class="choose-label">Choose your eSport:</p>
+
+    <form id="sport-form">
+      <div class="form-grid">
+        <div class="category">
+          <h3>Traditional Sports</h3>
+          <label><input type="radio" name="sport" value="Basketball" /> Basketball</label>
+          <label><input type="radio" name="sport" value="Volleyball" /> Volleyball</label>
+          <label><input type="radio" name="sport" value="Badminton" /> Badminton</label>
+          <label><input type="radio" name="sport" value="Table Tennis" /> Table Tennis</label>
+          <label><input type="radio" name="sport" value="Chess" /> Chess</label>
+          <label><input type="radio" name="sport" value="Track and Field" /> Track and Field</label>
+          <label><input type="radio" name="sport" value="Sepak" /> Sepak</label>
+        </div>
+
+        <div class="category">
+          <h3>Fun / Recreational Games</h3>
+          <label><input type="radio" name="sport" value="Tug of War" /> Tug of War</label>
+          <label><input type="radio" name="sport" value="Dodgeball" /> Dodgeball</label>
+          <label><input type="radio" name="sport" value="Relay Games" /> Relay Games</label>
+        </div>
+
+        <div class="category">
+          <h3>Esports / Mobile Games</h3>
+          <label><input type="radio" name="sport" value="Call of Duty: Mobile" /> Call of Duty: Mobile</label>
+          <label><input type="radio" name="sport" value="Valorant" /> Valorant</label>
+          <label><input type="radio" name="sport" value="League of Legends: Wild Rift" /> League of Legends: Wild Rift</label>
+          <label><input type="radio" name="sport" value="DOTA 2" /> Mobile Legends: Bang Bang</label>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="skip">Skip</button>
+        <button type="submit" class="go">Go</button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('sport-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const selected = document.querySelector('input[name="sport"]:checked');
+      if (selected) {
+        window.location.href = 'form.html';
+      } else {
+        alert('Please select a sport before proceeding.');
+      }
+    });
+    document.querySelector('.skip').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

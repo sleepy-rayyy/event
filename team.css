@@ -1,0 +1,188 @@
+:root {
+  --navy: #0b1a3d;
+  --dark-navy: rgba(10, 23, 72, 0.9);
+  --gold: #f4b400;
+  --light-gold: #ffd75e;
+  --white: #ffffff;
+  --transition: 0.28s ease;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--white);
+  background: linear-gradient(rgba(11, 26, 61, 0.8), rgba(11, 26, 61, 0.8)),
+              url("1.png") center/cover no-repeat fixed;
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: var(--dark-navy);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
+
+.icons i {
+  margin-left: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.icons i:hover {
+  color: var(--gold);
+}
+
+/* TEAM SECTION */
+.team-section {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.team-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 40px;
+  width: 85%;
+  max-width: 1200px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+/* HEADER */
+.team-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 10px;
+}
+
+.team-name {
+  color: var(--light-gold);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* TABLE AREA */
+.team-table-wrapper {
+  position: relative;
+}
+
+.team-table {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  gap: 0; /* ensures horizontal lines connect */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  text-align: center; /*enter text globally */
+}
+
+th {
+  color: var(--gold);
+  padding-bottom: 10px;
+  text-align: center; /* ✅ Center header text */
+}
+
+td {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Player Table */
+.player-table {
+  width: 65%;
+  border: none;
+}
+
+/* Role Table */
+.role-table {
+  width: 35%;
+  border: none;
+}
+
+.role-table th {
+  border-bottom: none;
+}
+
+/* Make horizontal lines align perfectly */
+.player-table tr td,
+.role-table tr td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.player-table tr:last-child td,
+.role-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Hover effect */
+.player-table tr:hover td,
+.role-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .team-table {
+    flex-direction: column;
+  }
+
+  .player-table,
+  .role-table {
+    width: 100%;
+  }
+}
